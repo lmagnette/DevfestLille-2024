@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title> Existing sources </mat-card-title>
+    <mat-card-content>
+        <table>
+            @for(source of sources(); track source.id){
+                <tr>
+                    <td>{{source.id}}</td>
+                    <td>{{source.name}}</td>
+                    <td>{{source.ingestionDate}}</td>
+                </tr>
+            }
+        </table>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-icon-button aria-label="Send message" (click)="refresh()">
+            <mat-icon>refresh</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

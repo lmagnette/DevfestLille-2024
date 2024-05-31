@@ -1,0 +1,18 @@
+<div class="content">
+    @for (entry of chatHistory(); track entry.prompt) {
+        <app-chat-bubble [message]="entry.prompt" [userName]="'You'" class="question"/>
+        <app-chat-bubble [message]="entry.response" [userName]="'Bot'" [resources]="entry.resources" class="answer"/>
+    }
+    @if (loading()) {
+        <div class="loader"></div>
+    }
+</div>
+<div class="input">
+    <mat-form-field class="example-full-width">
+        <mat-label>Leave a comment</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="prompt"></textarea>
+    </mat-form-field>
+    <button mat-icon-button aria-label="Send message" (click)="sendMessage()">
+        <mat-icon>send</mat-icon>
+    </button>
+</div>

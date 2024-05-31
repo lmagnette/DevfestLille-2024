@@ -1,0 +1,49 @@
+<div class="list">
+    <app-ingested-resources/>
+</div>
+<div class="ingest">
+    <mat-card>
+        <mat-card-title>Import a webpage</mat-card-title>
+        <mat-card-content>
+            <mat-form-field class="example-full-width">
+                <mat-label>Url</mat-label>
+                <input matInput placeholder="Ex. https://www.google.com" [(ngModel)]="source"/>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button aria-label="Ingest page" (click)="ingestWebPage()">
+                <mat-icon>send</mat-icon>
+                Import web page
+            </button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card>
+        <mat-card-title>Import files</mat-card-title>
+        <mat-card-content>
+            <input #fileInput type="file" id="files" name="files" multiple (change)="onFilesChanged()">
+            <ul>
+                @for (file of files; track file?.name) {
+                    <li>{{ file?.name }}</li>
+                }
+            </ul>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button aria-label="Send message" (click)="ingestFiles()">
+                <mat-icon>send</mat-icon>
+                Import selected files
+            </button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card>
+        <mat-card-title>Load local files</mat-card-title>
+        <mat-card-content>
+            <p>Import all the local files</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button aria-label="Send message" (click)="ingestLocal()">
+                <mat-icon>send</mat-icon>
+                Load local files
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

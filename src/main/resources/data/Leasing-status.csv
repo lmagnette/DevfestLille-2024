@@ -1,0 +1,101 @@
+Employee ID,Employee Name,Car Model,Leasing Company,Start Date,End Date
+E001,Donna Gray,Ford Focus,Arval,2021-12-21,2023-09-24
+E002,Ryan Vasquez,BMW 3 Series,Arval,2023-11-05,2026-01-20
+E003,Michelle Reyes,BMW 3 Series,Athlon,2023-06-17,2024-11-07
+E004,Brian Martin,Toyota Corolla,ALD Automotive,2021-06-28,2024-02-20
+E005,Raymond Davis,BMW 3 Series,LeasePlan,2022-11-19,2025-05-12
+E006,Levi Le,BMW 3 Series,ALD Automotive,2022-01-15,2023-01-24
+E007,William Hanna,BMW 3 Series,Alphabet,2022-02-01,2023-02-26
+E008,James Smith,Honda Civic,Arval,2022-04-15,2023-04-24
+E009,Carol Gomez,BMW 3 Series,Arval,2023-12-20,2025-03-12
+E010,Kevin Smith,Ford Focus,Arval,2022-07-22,2024-06-12
+E011,Jesse Mosley,Toyota Corolla,LeasePlan,2022-10-21,2024-08-14
+E012,Kimberly Rodriguez,BMW 3 Series,ALD Automotive,2024-04-30,2027-03-20
+E013,William Ochoa,Audi A4,Athlon,2024-03-29,2026-12-29
+E014,Michele Williams,Audi A4,LeasePlan,2022-01-12,2024-05-18
+E015,Dominique Russell,BMW 3 Series,ALD Automotive,2021-09-20,2023-03-26
+E016,Megan Thomas,Honda Civic,Athlon,2023-02-15,2025-01-17
+E017,Mrs. Stacy Gates,Audi A4,Alphabet,2023-06-16,2025-04-19
+E018,Allison Nelson,Honda Civic,Alphabet,2022-11-09,2024-12-12
+E019,William Ross,Toyota Corolla,ALD Automotive,2021-07-29,2023-12-26
+E020,Christopher Sanchez,Audi A4,LeasePlan,2022-04-25,2024-12-31
+E021,Jenna Payne,Mercedes C-Class,Athlon,2022-07-30,2024-03-10
+E022,Nicole Maldonado,Ford Focus,LeasePlan,2023-01-19,2026-01-07
+E023,Xavier Griffith,Mercedes C-Class,Alphabet,2022-10-14,2025-06-28
+E024,John Lane,Ford Focus,Athlon,2022-12-18,2025-02-10
+E025,Kimberly Cantrell,Honda Civic,LeasePlan,2023-06-12,2025-02-07
+E026,Shelia Harrison,BMW 3 Series,Alphabet,2022-02-26,2023-07-18
+E027,Adriana Hernandez,Honda Civic,Arval,2022-07-27,2024-04-18
+E028,Natalie Holder,Mercedes C-Class,Arval,2023-04-03,2026-02-08
+E029,Michael Fernandez,Honda Civic,ALD Automotive,2022-08-17,2023-09-29
+E030,Deanna Faulkner,Toyota Corolla,ALD Automotive,2023-02-03,2025-06-15
+E031,Melissa Johnson,BMW 3 Series,Athlon,2023-05-29,2025-02-19
+E032,Michelle Nichols,Ford Focus,Arval,2022-04-15,2023-05-13
+E033,Dennis Miller,Ford Focus,Alphabet,2023-01-05,2025-11-17
+E034,Harold Lowe,Ford Focus,Athlon,2021-08-29,2022-10-04
+E035,Steve Burns Jr.,Honda Civic,Alphabet,2023-09-23,2026-06-09
+E036,David Salas,Toyota Corolla,Arval,2024-05-25,2026-02-26
+E037,Harold Hall,Honda Civic,Arval,2022-12-19,2025-09-27
+E038,David Green,Honda Civic,LeasePlan,2022-01-07,2023-05-15
+E039,Katherine Ponce,Toyota Corolla,ALD Automotive,2022-08-27,2024-02-12
+E040,Adam Moore,Ford Focus,Athlon,2022-07-28,2024-04-12
+E041,Nicholas Scott,Mercedes C-Class,ALD Automotive,2021-06-04,2023-12-17
+E042,Thomas Barker,Mercedes C-Class,Athlon,2023-10-22,2025-11-29
+E043,Alan Morgan,Mercedes C-Class,LeasePlan,2023-11-20,2026-06-04
+E044,Ashley Mckee,BMW 3 Series,Athlon,2021-09-07,2023-05-31
+E045,Kathy Lewis,Toyota Corolla,Arval,2021-12-11,2024-11-27
+E046,Kristen Wilson,Honda Civic,LeasePlan,2022-12-20,2025-11-08
+E047,Holly Levy,Ford Focus,ALD Automotive,2021-07-12,2023-09-11
+E048,Linda Edwards,Toyota Corolla,LeasePlan,2021-07-27,2023-01-09
+E049,Brandon Ortega,Mercedes C-Class,LeasePlan,2024-03-22,2026-03-06
+E050,Ann Diaz,Mercedes C-Class,Athlon,2024-05-30,2026-06-22
+E051,Kurt Adams,Audi A4,Alphabet,2022-03-23,2024-04-18
+E052,Elizabeth Harrison,Honda Civic,LeasePlan,2022-06-26,2024-02-13
+E053,Benjamin Chavez,Ford Focus,Athlon,2021-12-08,2023-09-10
+E054,Sarah Davis,Audi A4,ALD Automotive,2022-08-12,2024-11-08
+E055,Lisa Neal DVM,Audi A4,Alphabet,2023-01-02,2024-02-24
+E056,David Baker,Honda Civic,Alphabet,2023-08-28,2025-05-17
+E057,William Crawford,BMW 3 Series,Alphabet,2024-04-26,2027-03-04
+E058,Dana Smith,Honda Civic,LeasePlan,2024-04-14,2026-10-15
+E059,Patricia Hanna,BMW 3 Series,Alphabet,2023-11-28,2025-06-11
+E060,Jessica Black,Toyota Corolla,ALD Automotive,2021-07-29,2024-03-12
+E061,Cody Roberts,Ford Focus,Athlon,2021-11-28,2024-10-31
+E062,Tracy Raymond,Mercedes C-Class,Alphabet,2022-03-12,2024-10-16
+E063,Charles Lane,Ford Focus,Arval,2022-12-27,2024-08-13
+E064,Mary Sampson,Toyota Corolla,Athlon,2022-04-14,2024-07-03
+E065,Robert Gomez,Ford Focus,Arval,2023-01-13,2024-05-29
+E066,Ashlee West,Audi A4,ALD Automotive,2022-05-26,2025-04-15
+E067,Timothy Kelly,BMW 3 Series,Arval,2021-11-28,2024-09-04
+E068,Brian Gross,Honda Civic,ALD Automotive,2023-11-17,2026-07-03
+E069,Corey Underwood,Ford Focus,LeasePlan,2021-10-05,2022-11-12
+E070,Martin Levy,Mercedes C-Class,Arval,2021-11-01,2024-06-23
+E071,Pamela Ortega,Mercedes C-Class,Arval,2022-08-10,2023-11-16
+E072,Tanner Owens,Ford Focus,LeasePlan,2021-10-15,2024-01-15
+E073,Dr. Kathryn Monroe,BMW 3 Series,LeasePlan,2022-03-27,2023-06-25
+E074,Jeffrey Williams,BMW 3 Series,Arval,2021-06-09,2022-10-02
+E075,William Mckinney,Honda Civic,Alphabet,2024-04-18,2027-02-13
+E076,James Brown,Mercedes C-Class,Arval,2021-06-12,2023-11-11
+E077,John Taylor,BMW 3 Series,Arval,2023-03-14,2024-08-17
+E078,Lisa Cox PhD,Toyota Corolla,LeasePlan,2022-07-22,2024-12-12
+E079,Wesley Davis,Audi A4,ALD Automotive,2023-03-24,2025-08-04
+E080,Eric Graves,Toyota Corolla,Arval,2023-05-15,2024-10-09
+E081,Matthew Fisher,Honda Civic,Alphabet,2024-02-13,2026-03-22
+E082,Julie Bryan,Ford Focus,ALD Automotive,2022-01-30,2024-02-24
+E083,Richard Warren,Toyota Corolla,LeasePlan,2024-03-18,2026-11-07
+E084,Joseph Moore,Audi A4,Athlon,2021-11-10,2023-03-28
+E085,Greg Snyder,BMW 3 Series,LeasePlan,2023-01-05,2024-12-08
+E086,Michael Humphrey,Honda Civic,Alphabet,2023-04-11,2025-03-21
+E087,Dwayne Myers,Audi A4,ALD Automotive,2024-01-01,2026-08-07
+E088,David Webb,Mercedes C-Class,Arval,2023-01-03,2025-07-16
+E089,Christy Parrish,Honda Civic,LeasePlan,2022-11-19,2024-05-01
+E090,Morgan Coleman,Mercedes C-Class,LeasePlan,2022-10-07,2024-01-23
+E091,Darryl Vasquez,Audi A4,Alphabet,2023-09-19,2026-03-08
+E092,Larry Mclean,BMW 3 Series,Arval,2021-08-08,2024-01-31
+E093,James Peck,Audi A4,ALD Automotive,2022-08-29,2024-06-19
+E094,Lisa Smith,Honda Civic,Athlon,2022-11-05,2024-04-06
+E095,Destiny Duncan,Ford Focus,ALD Automotive,2024-04-22,2026-08-11
+E096,Jennifer Meyer,Ford Focus,LeasePlan,2024-01-07,2025-07-17
+E097,Melissa Torres,Mercedes C-Class,ALD Automotive,2021-07-23,2022-12-05
+E098,Yvonne Wagner,Audi A4,Athlon,2023-07-08,2024-10-09
+E099,Jesus Landry,Toyota Corolla,LeasePlan,2024-03-11,2026-08-29
+E100,Richard Garner,Honda Civic,Arval,2022-08-19,2024-12-27

@@ -1,0 +1,25 @@
+<div class="history" [class.small]="!menuDisplayed()">
+    <div class="menu">
+        <button mat-icon-button aria-label="Create a new chat" (click)="toggleMenu()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        @if (menuDisplayed()) {
+            <button mat-icon-button aria-label="Create a new chat" (click)="createNewChat()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        }
+    </div>
+    @if (menuDisplayed()) {
+        <table>
+            <tbody>
+                @for (chat of chats(); track chat.id) {
+                    <tr>
+                        <td>
+                            {{ chat.name }}
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

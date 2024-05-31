@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .list{
+    width: 100%;
+    justify-content: center;
+    //align-items: center;
+    display: flex;
+  }
+
+  .ingest {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    align-content: space-around;
+
+    mat-card {
+      align-items: center;
+      min-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      min-height: 200px;
+
+      mat-card-content {
+        min-height: 100px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+<div class="history" [class.small]="collapsed()">
+    <app-chat-history [collapsed]="collapsed()" (collapsedChange)="onCollapse($event)"/>
+</div>
+<div class="chat">
+    <app-chat/>
+</div>

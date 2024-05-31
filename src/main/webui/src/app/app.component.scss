@@ -1,0 +1,46 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  main{
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 60px);
+
+    .history {
+      flex-grow: 2;
+      height: 100%;
+
+      &.small{
+        flex-grow: 1;
+      }
+
+      .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .chat{
+      flex-grow:8;
+      height: 100%;
+    }
+    .resources{
+      flex-grow: 2;
+      width: 30%;
+      height: 100%;
+    }
+  }
+}
+
+a {
+  margin: 2px;
+  color:rgb(0, 92, 187);
+  text-decoration-line:none;
+  &:visited{
+    color:rgb(0, 92, 187);
+  }
+  &.active{
+    text-decoration-line: underline;
+  }
+}

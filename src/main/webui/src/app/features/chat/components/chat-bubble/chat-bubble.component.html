@@ -1,0 +1,26 @@
+@if(side() === 'left'){
+<div class="triangle"></div>
+}
+<div class="chat-bubble" [class]="side()">
+    <p>{{userName()}}:</p>
+    <p class="content">
+        <markdown class="variable-binding" [data]="message()"></markdown>
+    </p>
+    <div class="left">
+    @if (resources().length) {
+        <button mat-flat-button (click)="toggleRessources()">
+            {{ showRessources() ? "Cacher les sources" : "Voir les sources" }}
+        </button>
+    }
+    </div>
+    @if (showRessources()) {
+        <ul>
+            @for (resource of resources(); track resource.source) {
+                <li>{{ resource.source }} -  {{ resource.score * 100 | number }}%</li>
+            }
+        </ul>
+    }
+</div>
+@if(side() === 'right'){
+    <div class="triangle right"></div>
+}
