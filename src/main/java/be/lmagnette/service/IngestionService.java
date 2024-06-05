@@ -2,6 +2,7 @@ package be.lmagnette.service;
 
 
 import be.lmagnette.ai.DocumentIngestor;
+import be.lmagnette.ai.DocumentTitleAiService;
 import be.lmagnette.entities.Source;
 import be.lmagnette.exceptions.IngestionException;
 import be.lmagnette.models.*;
@@ -39,6 +40,9 @@ public class IngestionService {
 
     @Inject
     TikaParser tikaParser;
+
+    @Inject
+    DocumentTitleAiService titleAiService;
 
 
     @VirtualThreads
@@ -145,10 +149,21 @@ public class IngestionService {
         var cats = documents.stream().map(d -> d.metadata().getString(CATEGORY)).toList();
         var sources = documents.stream().map(d -> d.metadata().getString(SOURCE)).toList();
         var list = documents.stream()
-                .map(d -> new Source(d.metadata().getString(SOURCE), LocalDateTime.now(), Category.valueOf(d.metadata().getString(CATEGORY)))).toList();
+                .map(d -> new Source(
+                        getTitle(d.text()),
+                        d.metadata().getString(SOURCE),
+                        LocalDateTime.now(),
+                        Category.valueOf(d.metadata().getString(CATEGORY)))).toList();
         list.forEach( s -> s.persist());
         Log.info("Saved "+Source.count());
     }
 
+    private String getTitle(String content){
+        var title = this.titleAiService.getTitle(content);
+        if(title.length()> 100){
+            title = title.substring(0, 100);
+        }
+        return title;
+    }
 
 }

@@ -1,46 +1,63 @@
 import {Component, inject, signal, viewChild} from '@angular/core';
 import {FileIngestionComponent} from "../../../ingestion/components/file-ingestion/file-ingestion.component";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {IngestionService} from "../../../ingestion/services/ingestion.service";
 import {switchMap} from "rxjs";
 import {MeetingService} from "../../services/meeting.service";
 import {MarkdownComponent} from "ngx-markdown";
+import {DatePipe} from "@angular/common";
+import {
+    MatCell,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell, MatHeaderCellDef,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow, MatRowDef, MatTable
+} from "@angular/material/table";
+import {toSignal} from "@angular/core/rxjs-interop";
+
+
 
 @Component({
-  selector: 'app-meeting-page',
-  standalone: true,
-  imports: [
-    FileIngestionComponent,
-    MatButton,
-    MatIcon,
-    MarkdownComponent
-  ],
-  templateUrl: './meeting-page.component.html',
-  styleUrl: './meeting-page.component.scss'
+    selector: 'app-meeting-page',
+    standalone: true,
+    imports: [
+        FileIngestionComponent,
+        MatButton,
+        MatIcon,
+        MarkdownComponent,
+        DatePipe,
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatRow,
+        MatRowDef,
+        MatTable,
+        MatHeaderCellDef,
+        MatIconButton
+    ],
+    templateUrl: './meeting-page.component.html',
+    styleUrl: './meeting-page.component.scss'
 })
 export default class MeetingPageComponent {
-  fileInput = viewChild('fileInput');
-  files: File[] | null = null;
 
-  ingestionService = inject(IngestionService);
-  meetingService = inject(MeetingService)
+    meetingService = inject(MeetingService)
 
-  summary = signal<string|null>(null);
+    dataSource = toSignal(this.meetingService.list());
+    displayedColumns = ['title','url', 'category', 'ingestionDate','actions'];
 
+    summary = signal<string | null>(null);
 
-  onFilesChanged() {
-    const selectedFiles: { [key: string]: File } = (this.fileInput() as any).nativeElement.files;
-    this.files = Object.values(selectedFiles);
-    this.summary.set(null);
-  }
+    summarize(id:number){
+        console.log('summ '+id);
+        this.meetingService.summarizeById(id).subscribe(
+            data => this.summary.set(data)
+        );
+    }
 
-
-  handleMeeting() {
-    this.ingestionService.ingestFiles(this.files || []).pipe(
-        switchMap(() => this.meetingService.summarize())
-    ).subscribe(
-        data => this.summary.set(data.summary || null)
-    );
-  }
 }

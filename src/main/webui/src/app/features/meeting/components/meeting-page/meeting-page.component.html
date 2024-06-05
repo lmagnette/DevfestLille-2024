@@ -1,17 +1,34 @@
 <div class="meeting">
-    <div class="card">
-        <p>Meeting assistant</p>
-        <input #fileInput type="file" id="files" name="files" multiple (change)="onFilesChanged()">
-        <ul>
-            @for (file of files; track file?.name) {
-                <li>{{ file?.name }}</li>
-            }
-        </ul>
-        <button mat-button aria-label="Handle meeting notes" (click)="handleMeeting()">
-            <mat-icon>send</mat-icon>
-            Handle meeting notes
-        </button>
-    </div>
+    <table mat-table [dataSource]="dataSource() || []" class="mat-elevation-z8">
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Title </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+        <ng-container matColumnDef="url">
+            <th mat-header-cell *matHeaderCellDef> Url </th>
+            <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef> Category </th>
+            <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ingestionDate">
+            <th mat-header-cell *matHeaderCellDef> Ingestion date </th>
+            <td mat-cell *matCellDef="let element"> {{element.ingestionDate | date}} </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions</th>
+            <td mat-cell *matCellDef="let element">
+            <button mat-icon-button aria-label="Summarize meeting" (click)="summarize(element.id)">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
     @if (summary()) {
         <div class="card">
             <markdown>

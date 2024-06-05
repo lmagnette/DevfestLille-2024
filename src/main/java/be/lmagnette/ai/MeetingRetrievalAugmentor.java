@@ -24,7 +24,7 @@ public class MeetingRetrievalAugmentor implements Supplier<RetrievalAugmentor> {
                 .embeddingModel(model)
                 .embeddingStore(store)
                 .filter(onlyMeeting)
-                .maxResults(3)
+                .maxResults(10)
                 .build();
         augmentor = DefaultRetrievalAugmentor
                 .builder()
