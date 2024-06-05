@@ -1,20 +1,20 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 import ChatPageComponent from "./features/chat/components/chat-page/chat-page.component";
-import ResourcesPageComponent from "./features/sources/components/resources-page/resources-page.component";
+import IngestionPageComponent from "./features/ingestion/components/ingestion-page/ingestion-page.component";
 
 export const routes: Routes = [
-    {
-        path:'chat',
-        loadComponent:() => ChatPageComponent
-    },
-    {
-        path:'resources',
-        loadComponent: () => ResourcesPageComponent
-    },
-    { path: '**', redirectTo:'chat' },
-    {
-        path:'',
-        pathMatch:'full',
-        redirectTo:'chat'
-    }
+  {
+    path: 'chat',
+    loadComponent: () => ChatPageComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'ingest',
+    loadComponent: () => IngestionPageComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'chat'
+  }
 ];

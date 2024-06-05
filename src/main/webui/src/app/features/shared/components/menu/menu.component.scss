@@ -1,0 +1,19 @@
+:host{
+  display: flex;
+  flex-direction: column;
+
+  a{
+    text-decoration-line: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    color: rgb(0, 221, 221);
+    &:visited{
+      color: rgb(0, 221, 221);
+    }
+    mat-icon{
+      margin:5px
+    }
+  }
+}

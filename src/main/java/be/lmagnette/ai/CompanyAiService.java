@@ -11,8 +11,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.UUID;
 
 @RegisterAiService(
-        retrievalAugmentor = DocumentRetrievalAugmentor.class,
-        tools = {EmailService.class, DateService.class}
+        retrievalAugmentor = DocumentRetrievalAugmentor.class
 )
 @ApplicationScoped
 public interface CompanyAiService {

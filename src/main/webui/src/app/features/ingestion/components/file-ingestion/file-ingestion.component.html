@@ -1,0 +1,10 @@
+<input #fileInput type="file" id="files" name="files" multiple (change)="onFilesChanged()">
+<ul>
+  @for (file of files; track file?.name) {
+    <li>{{ file?.name }}</li>
+  }
+</ul>
+<button mat-button aria-label="Send message" (click)="ingestFiles()">
+  <mat-icon>send</mat-icon>
+  Import selected files
+</button>

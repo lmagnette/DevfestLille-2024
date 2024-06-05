@@ -1,0 +1,8 @@
+@for (entry of menu; track entry.label) {
+  <a [routerLink]="entry.url">
+    <mat-icon>
+      {{ entry.iconName }}
+    </mat-icon>
+    {{ entry.label }}
+  </a>
+}

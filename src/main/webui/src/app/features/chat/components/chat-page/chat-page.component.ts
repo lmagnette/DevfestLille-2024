@@ -1,21 +1,26 @@
-import {Component, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {ChatBoxComponent} from "../chat-box/chat-box.component";
+import {ChatMessageComponent} from "../chat-message/chat-message.component";
 import {ChatHistoryComponent} from "../chat-history/chat-history.component";
-import {ChatComponent} from "../chat/chat.component";
+import {ChatService} from "../../services/chat.service";
 
 @Component({
   selector: 'app-chat-page',
   standalone: true,
   imports: [
-    ChatHistoryComponent,
-    ChatComponent
+    ChatBoxComponent,
+    ChatMessageComponent,
+    ChatHistoryComponent
   ],
   templateUrl: './chat-page.component.html',
   styleUrl: './chat-page.component.scss'
 })
-export default class ChatPageComponent {
-  collapsed = signal<boolean>(false);
+export default class ChatPageComponent  {
 
-  onCollapse(collapsed: boolean) {
-    this.collapsed.set(collapsed);
+  service = inject(ChatService);
+
+  constructor() {
+    this.service.initChat();
   }
+
 }

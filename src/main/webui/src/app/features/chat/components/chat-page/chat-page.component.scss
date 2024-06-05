@@ -1,31 +1,12 @@
-:host{
+app-chat-history{
+  height: 85%;
+  overflow-y: scroll;
   display: flex;
-  flex-direction: row;
-  height: calc(100vh - 60px);
-  width: 100%;
-
-  .history {
-    flex-grow: 2;
-    height: 100%;
-
-    &.small{
-      flex-grow: 1;
-    }
-
-    .menu {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-
-  .chat{
-    flex-grow:8;
-    height: 100%;
-  }
-  .resources{
-    flex-grow: 2;
-    width: 30%;
-    height: 100%;
-  }
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+app-chat-box{
+  max-height: 15%;
+  display: flex;
 }

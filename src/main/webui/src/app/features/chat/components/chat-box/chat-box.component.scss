@@ -1,0 +1,12 @@
+form{
+  margin: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: space-evenly;
+
+  mat-form-field{
+    width:90%
+  }
+}

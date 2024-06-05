@@ -1,0 +1,15 @@
+<img [ngSrc]="userImage()" [width]="48" [height]="'48'" alt="user image">
+<div class="card">
+  <p class="content">
+      <markdown>{{ content() }}</markdown>
+  </p>
+  @if (sources().length) {
+    <p>
+      <button mat-button color="primary" (click)="toggleSource()">Sources</button>
+    </p>
+  }
+  @if(showSources()){
+    <app-chat-message-sources [dataSource]="sources()"/>
+  }
+</div>
+

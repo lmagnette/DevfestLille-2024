@@ -1,38 +1,21 @@
-import {Component, inject, model, OnInit, signal} from '@angular/core';
-import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
-import {ChatHistoryService} from "../../services/chat-history.service";
+import {Component, inject} from '@angular/core';
+import {ChatExchange} from "../../model/chat-exchange";
+import {ChatMessageComponent} from "../chat-message/chat-message.component";
 import {ChatService} from "../../services/chat.service";
 
 @Component({
   selector: 'app-chat-history',
   standalone: true,
-    imports: [
-        MatIcon,
-        MatIconButton
-    ],
+  imports: [
+    ChatMessageComponent
+  ],
   templateUrl: './chat-history.component.html',
   styleUrl: './chat-history.component.scss'
 })
-export class ChatHistoryComponent implements OnInit{
+export class ChatHistoryComponent {
 
-    collapsed = model.required<boolean>();
+  protected chat = inject(ChatService).chatHistory;
+  protected loading = inject(ChatService).loading;
 
-    chatHistoryService = inject(ChatHistoryService);
-    chatService = inject(ChatService);
-    chats = this.chatHistoryService.chats;
 
-    menuDisplayed = signal<boolean>(true);
-
-    ngOnInit(): void {
-        this.createNewChat();
-    }
-
-    createNewChat(){
-        this.chatHistoryService.createNewChat().subscribe( data => this.chatService.currentChatId.set(data.id));
-    }
-
-    toggleMenu() {
-        this.collapsed.update( value => !value);
-    }
 }

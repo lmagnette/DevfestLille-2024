@@ -1,10 +1,18 @@
-<mat-toolbar>
-    <span>Company Genius</span>
-    <a routerLink="chat" routerLinkActive="active">chat</a>
-    <a routerLink="resources" routerLinkActive="active">content</a>
+<mat-toolbar color="accent">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
 </mat-toolbar>
 
-<main>
-    <router-outlet/>
-</main>
+<mat-drawer-container class="app" autosize="true">
+  <mat-drawer #drawer mode="side">
+    <app-menu/>
+  </mat-drawer>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</mat-drawer-container>
+
+
 

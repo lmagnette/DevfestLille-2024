@@ -105,8 +105,9 @@ public class IngestionService {
         try (var inputStream = path.toUri().toURL().openStream()) {
             TikaContent content = tikaParser.parse(inputStream);
             var metadata = Metadata.from(Map.of("SOURCE", path.getFileName().toAbsolutePath().toString()));
+            Log.info("Medata document" + path.getFileName());
             var document = Document.document(content.getText(), metadata);
-            Log.info("Medata document" + document.metadata().toString());
+
             return Optional.of(document);
         } catch (IOException e) {
             return Optional.empty();

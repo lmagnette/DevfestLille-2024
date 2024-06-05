@@ -1,0 +1,11 @@
+<p>Import a webpage</p>
+<div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Url</mat-label>
+    <input matInput placeholder="Ex. https://www.google.com" [(ngModel)]="source"/>
+  </mat-form-field>
+</div>
+<button mat-button aria-label="Ingest page" (click)="ingestWebPage()">
+  <mat-icon>send</mat-icon>
+  Import web page
+</button>
