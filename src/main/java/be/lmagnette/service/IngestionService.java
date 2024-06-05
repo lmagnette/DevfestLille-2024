@@ -4,10 +4,7 @@ package be.lmagnette.service;
 import be.lmagnette.ai.DocumentIngestor;
 import be.lmagnette.entities.Source;
 import be.lmagnette.exceptions.IngestionException;
-import be.lmagnette.models.FileIngestionRequest;
-import be.lmagnette.models.IngestionRequest;
-import be.lmagnette.models.LocalIngestRequest;
-import be.lmagnette.models.UrlIngestionRequest;
+import be.lmagnette.models.*;
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.DocumentLoader;
 import dev.langchain4j.data.document.DocumentParser;
@@ -21,7 +18,6 @@ import io.quarkus.tika.TikaParser;
 import io.quarkus.virtual.threads.VirtualThreads;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.transaction.Transactional;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -31,15 +27,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Stream;
 
 @ApplicationScoped
 public class IngestionService {
 
+    public static final String CATEGORY = "CATEGORY";
+    public static final String SOURCE = "SOURCE";
     @Inject
     DocumentIngestor ingestor;
 
     @Inject
     TikaParser tikaParser;
+
 
     @VirtualThreads
     public void ingest(IngestionRequest request) {
@@ -53,6 +53,7 @@ public class IngestionService {
     }
 
     private List<Document> ingestFile(FileIngestionRequest request) {
+        Log.info("Ingesting "+request.file.fileName());
         var document = this.getDocument(request.file.uploadedFile());
         document.ifPresentOrElse(ingestor::ingest,() -> {throw new IngestionException("An error occured while ingesting " + request.file.fileName());});
         return document.map(List::of).orElse(Collections.emptyList());
@@ -63,6 +64,8 @@ public class IngestionService {
         try {
             Log.info("Ingesting webpage "+ request.url);
             var document = this.getContentFromUrl(request.url);
+            var category = this.ingestor.getClassifier().classify(document.text());
+            document.metadata().put(CATEGORY, category.getFirst().name());
             Log.info("Ingested webpage "+ document.metadata().asMap().toString());
             ingestor.ingest(document);
             return List.of(document);
@@ -84,7 +87,7 @@ public class IngestionService {
             return getDirectoryDocuments(dirPath);
         }
         var documents = getDocument(dirPath).map(Collections::singletonList).orElse(Collections.emptyList());
-        documents.forEach(document -> Log.info("Metadata :" + document.metadata().asMap()));
+        documents.forEach(document -> Log.info("Metadata :" + document.metadata().toMap()));
         return documents;
     }
 
@@ -104,7 +107,12 @@ public class IngestionService {
     private Optional<Document> getDocument(Path path) {
         try (var inputStream = path.toUri().toURL().openStream()) {
             TikaContent content = tikaParser.parse(inputStream);
-            var metadata = Metadata.from(Map.of("SOURCE", path.getFileName().toAbsolutePath().toString()));
+            var category = this.ingestor.getClassifier().classify(content.getText());
+            saveDocument(category, content);
+            var metadata = Metadata.from(Map.of(
+                    SOURCE, path.getFileName().toAbsolutePath().toString(),
+                    CATEGORY, category.getFirst().name()
+            ));
             Log.info("Medata document" + path.getFileName());
             var document = Document.document(content.getText(), metadata);
 
@@ -114,12 +122,18 @@ public class IngestionService {
         }
     }
 
+    private void saveDocument(List<Category> category, TikaContent content) {
+
+    }
+
     private Document getContentFromUrl(String webPageUrl) throws MalformedURLException {
         UrlSource urlSource = new UrlSource(URI.create(webPageUrl).toURL());
 
         DocumentParser documentParser = new TextDocumentParser();
         Document document = DocumentLoader.load(urlSource, documentParser);
-        document.metadata().add("SOURCE",webPageUrl);
+        document.metadata().put(SOURCE,webPageUrl);
+        document.metadata().put(CATEGORY,this.ingestor.getClassifier().classify(document.text()).getFirst().name());
+
 
         HtmlTextExtractor htmlTextExtractor = new HtmlTextExtractor();
         return htmlTextExtractor.transform(document);
@@ -128,9 +142,12 @@ public class IngestionService {
 
 
     private void saveSourceList(List<Document> documents){
-        documents.stream()
-                .map(d -> new Source(d.metadata().getString("SOURCE"), LocalDateTime.now()))
-                .forEach( s -> s.persist());
+        var cats = documents.stream().map(d -> d.metadata().getString(CATEGORY)).toList();
+        var sources = documents.stream().map(d -> d.metadata().getString(SOURCE)).toList();
+        var list = documents.stream()
+                .map(d -> new Source(d.metadata().getString(SOURCE), LocalDateTime.now(), Category.valueOf(d.metadata().getString(CATEGORY)))).toList();
+        list.forEach( s -> s.persist());
+        Log.info("Saved "+Source.count());
     }
 
 

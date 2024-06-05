@@ -1,6 +1,7 @@
 package be.lmagnette.resources;
 
 import be.lmagnette.ai.CompanyAiService;
+import be.lmagnette.ai.MeetingAiService;
 import be.lmagnette.models.MeetingSummary;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -14,13 +15,13 @@ import jakarta.ws.rs.core.Response;
 public class MeetingResource {
 
     @Inject
-    CompanyAiService companyAiService;
+    MeetingAiService meetingAiService;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response summarize(MeetingSummary meeting) {
-        var summary = companyAiService.meetingSummary(meeting.description());
+        var summary = meetingAiService.meetingSummary(meeting.description());
         return Response.ok(new MeetingSummary(meeting.description(),summary)).build();
     }
 }

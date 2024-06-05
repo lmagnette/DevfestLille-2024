@@ -36,7 +36,7 @@ export class SourcesListComponent implements OnInit {
 
     service = inject(IngestionService)
     dataSource = this.service.sources;
-    displayedColumns = ['name', 'ingestionDate'];
+    displayedColumns = ['name', 'category', 'ingestionDate'];
 
     ngOnInit(): void {
       this.service.listSources().subscribe();

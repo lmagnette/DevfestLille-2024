@@ -58,7 +58,9 @@ public class IngestionResource {
     @Path("sources")
     @Produces(MediaType.APPLICATION_JSON)
     public RestResponse<List<PanacheEntityBase>> getSources(){
-        return RestResponse.ResponseBuilder.ok(Source.listAll()).build();
+
+        var entities = Source.listAll();
+        return RestResponse.ResponseBuilder.ok(entities).build();
     }
 
 
