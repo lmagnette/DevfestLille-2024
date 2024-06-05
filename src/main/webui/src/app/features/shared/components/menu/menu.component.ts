@@ -15,14 +15,19 @@ import {RouterLink} from "@angular/router";
 export default class MenuComponent {
   menu:MenuEntry[] = [
     {
-      label:'chat',
+      label:'Chat',
       url:'./chat',
       iconName:'chat'
     },
     {
-      label:'ingest',
+      label:'Ingest',
       url:'./ingest',
       iconName:'cloud_download'
+    },
+    {
+      label:'Meeting',
+      url:'./meeting',
+      iconName:'groups'
     }
   ];
 }

@@ -1,0 +1,22 @@
+<div class="meeting">
+    <div class="card">
+        <p>Meeting assistant</p>
+        <input #fileInput type="file" id="files" name="files" multiple (change)="onFilesChanged()">
+        <ul>
+            @for (file of files; track file?.name) {
+                <li>{{ file?.name }}</li>
+            }
+        </ul>
+        <button mat-button aria-label="Handle meeting notes" (click)="handleMeeting()">
+            <mat-icon>send</mat-icon>
+            Handle meeting notes
+        </button>
+    </div>
+    @if (summary()) {
+        <div class="card">
+            <markdown>
+                {{ summary() }}
+            </markdown>
+        </div>
+    }
+</div>
