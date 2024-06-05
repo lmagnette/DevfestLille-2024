@@ -35,6 +35,7 @@ public class IngestionService {
 
     public static final String CATEGORY = "CATEGORY";
     public static final String SOURCE = "SOURCE";
+    public static final String CONTENT_TYPE = "Content-Type";
     @Inject
     DocumentIngestor ingestor;
 
@@ -70,6 +71,7 @@ public class IngestionService {
             var document = this.getContentFromUrl(request.url);
             var category = this.ingestor.getClassifier().classify(document.text());
             document.metadata().put(CATEGORY, category.getFirst().name());
+            document.metadata().put(CONTENT_TYPE, "text/html");
             Log.info("Ingested webpage "+ document.metadata().asMap().toString());
             ingestor.ingest(document);
             return List.of(document);
@@ -115,7 +117,8 @@ public class IngestionService {
             saveDocument(category, content);
             var metadata = Metadata.from(Map.of(
                     SOURCE, path.getFileName().toAbsolutePath().toString(),
-                    CATEGORY, category.getFirst().name()
+                    CATEGORY, category.getFirst().name(),
+                    CONTENT_TYPE, content.getMetadata().getSingleValue(CONTENT_TYPE)
             ));
             Log.info("Medata document" + path.getFileName());
             var document = Document.document(content.getText(), metadata);
@@ -153,7 +156,10 @@ public class IngestionService {
                         getTitle(d.text()),
                         d.metadata().getString(SOURCE),
                         LocalDateTime.now(),
-                        Category.valueOf(d.metadata().getString(CATEGORY)))).toList();
+                        Category.valueOf(d.metadata().getString(CATEGORY)),
+                        d.metadata().getString(CONTENT_TYPE)
+                        )
+                ).toList();
         list.forEach( s -> s.persist());
         Log.info("Saved "+Source.count());
     }

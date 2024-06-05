@@ -54,7 +54,6 @@ export default class MeetingPageComponent {
     summary = signal<string | null>(null);
 
     summarize(id:number){
-        console.log('summ '+id);
         this.meetingService.summarizeById(id).subscribe(
             data => this.summary.set(data)
         );

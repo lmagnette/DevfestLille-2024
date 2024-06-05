@@ -4,4 +4,5 @@ export interface Source{
     url:string;
     ingestionDate:string;
     category:string;
+    contentType:string;
 }

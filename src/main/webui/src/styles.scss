@@ -20,3 +20,11 @@ markdown{
     font-size: 1.75rem !important;
   }
 }
+
+.card {
+  border: 1px solid rgb(0, 79, 79);
+  box-shadow: 3px 3px 3px rgb(0, 79, 79);
+  overflow: scroll;
+  margin: 10px;
+  padding: 10px;
+}

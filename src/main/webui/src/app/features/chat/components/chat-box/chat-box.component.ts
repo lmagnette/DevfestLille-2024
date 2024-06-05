@@ -27,7 +27,6 @@ export class ChatBoxComponent {
 
 
   onSubmit() {
-    console.log('submit');
     this.service.chat(this.prompt).subscribe();
   }
 }

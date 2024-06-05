@@ -21,15 +21,18 @@ public class Source extends PanacheEntity {
     public LocalDateTime ingestionDate;
     @Enumerated(EnumType.STRING)
     public Category category;
+    @Column
+    public String contentType;
 
     public Source() {
     }
 
-    public Source(String title,String url, LocalDateTime ingestionDate, Category category) {
+    public Source(String title,String url, LocalDateTime ingestionDate, Category category, String contentType) {
         this.title = title;
         this.url = url;
         this.ingestionDate = ingestionDate;
         this.category = category;
+        this.contentType = contentType;
     }
 
     public static List<Source> findByCategory(Category category){
