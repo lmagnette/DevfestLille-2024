@@ -1,7 +1,5 @@
 package be.lmagnette.ai;
 
-import be.lmagnette.tools.DateService;
-import be.lmagnette.tools.EmailService;
 import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
@@ -11,8 +9,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.UUID;
 
 @RegisterAiService(
-        retrievalAugmentor = DocumentRetrievalAugmentor.class,
-        tools = {DateService.class,EmailService.class}
+        retrievalAugmentor = DocumentRetrievalAugmentor.class
 )
 @ApplicationScoped
 public interface CompanyAiService {

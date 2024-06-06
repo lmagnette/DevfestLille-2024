@@ -1,13 +1,11 @@
 package be.lmagnette.ai;
 
-import be.lmagnette.tools.ActionService;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
 
 @RegisterAiService(
-        retrievalAugmentor = MeetingRetrievalAugmentor.class,
-        tools = {ActionService.class}
+        retrievalAugmentor = MeetingRetrievalAugmentor.class
 )
 public interface MeetingAiService {
 
