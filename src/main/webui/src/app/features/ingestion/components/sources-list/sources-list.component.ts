@@ -13,6 +13,7 @@ import {IngestionService} from "../../services/ingestion.service";
 import {Source} from "../../models/source";
 import {DatePipe} from "@angular/common";
 import {ContentTypePipe} from "../../../shared/content-type.pipe";
+import {MatChip, MatChipOption} from "@angular/material/chips";
 
 @Component({
     selector: 'app-sources-list',
@@ -29,7 +30,9 @@ import {ContentTypePipe} from "../../../shared/content-type.pipe";
         MatRow,
         MatRowDef,
         DatePipe,
-        ContentTypePipe
+        ContentTypePipe,
+        MatChipOption,
+        MatChip
     ],
     templateUrl: './sources-list.component.html',
     styleUrl: './sources-list.component.scss'
@@ -39,9 +42,17 @@ export class SourcesListComponent implements OnInit {
     service = inject(IngestionService);
     dataSource = this.service.sources;
     displayedColumns = ['title','url', 'category', 'contentType', 'ingestionDate'];
+    chipColor: {[key:string]:string} = {
+        'HR':'red',
+        'FINANCE':'blue',
+        'MEETING':'green'
+    }
 
     ngOnInit(): void {
       this.service.listSources().subscribe();
     }
 
+    color(category: string) {
+        return this.chipColor[category];
+    }
 }

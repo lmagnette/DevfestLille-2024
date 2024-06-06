@@ -9,8 +9,16 @@
     justify-content: start;
     align-items: center;
     color: rgb(0, 221, 221);
+    margin:10px;
+
     &:visited{
       color: rgb(0, 221, 221);
+    }
+    &.active{
+      color: #ffb787;
+    }
+    &:visited.active{
+      color: #ffb787;
     }
     mat-icon{
       margin:5px

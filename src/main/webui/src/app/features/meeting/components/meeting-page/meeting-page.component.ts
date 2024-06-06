@@ -17,6 +17,7 @@ import {
     MatRow, MatRowDef, MatTable
 } from "@angular/material/table";
 import {toSignal} from "@angular/core/rxjs-interop";
+import {ContentTypePipe} from "../../../shared/content-type.pipe";
 
 
 
@@ -39,7 +40,8 @@ import {toSignal} from "@angular/core/rxjs-interop";
         MatRowDef,
         MatTable,
         MatHeaderCellDef,
-        MatIconButton
+        MatIconButton,
+        ContentTypePipe
     ],
     templateUrl: './meeting-page.component.html',
     styleUrl: './meeting-page.component.scss'
@@ -49,7 +51,7 @@ export default class MeetingPageComponent {
     meetingService = inject(MeetingService)
 
     dataSource = toSignal(this.meetingService.list());
-    displayedColumns = ['title','url', 'category', 'ingestionDate','actions'];
+    displayedColumns = ['title','url', 'contentType', 'ingestionDate','actions'];
 
     summary = signal<string | null>(null);
 

@@ -11,7 +11,9 @@
     </ng-container>
     <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef> Category </th>
-        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+        <td mat-cell *matCellDef="let element">
+            <mat-chip [class]="element.category">{{element.category}}</mat-chip>
+        </td>
     </ng-container>
     <ng-container matColumnDef="contentType">
         <th mat-header-cell *matHeaderCellDef> ContentType </th>

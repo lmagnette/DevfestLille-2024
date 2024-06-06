@@ -28,3 +28,18 @@ markdown{
   margin: 10px;
   padding: 10px;
 }
+
+.HR{
+  --mdc-chip-elevated-container-color: #004f4f
+}
+.FINANCE{
+  --mdc-chip-elevated-container-color: #690005
+}
+.FLEET{
+  --mdc-chip-elevated-container-color: #ffb787;
+  --mdc-chip-label-text-color:rgb(25, 28, 28);
+}
+.MEETING{
+  --mdc-chip-elevated-container-color: #00dddd;
+  --mdc-chip-label-text-color: rgb(25, 28, 28);
+}

@@ -1,5 +1,5 @@
 @for (entry of menu; track entry.label) {
-  <a [routerLink]="entry.url">
+  <a [routerLink]="entry.url" [routerLinkActive]="'active'">
     <mat-icon>
       {{ entry.iconName }}
     </mat-icon>

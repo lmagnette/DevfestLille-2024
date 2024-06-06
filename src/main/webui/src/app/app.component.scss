@@ -1,5 +1,6 @@
 .app{
   margin: 5px;
+  height: calc(100vh - 64px);
 }
 mat-toolbar{
   background: rgb(0, 79, 79);
@@ -9,4 +10,5 @@ mat-toolbar{
 mat-drawer{
   border-radius: 0;
   border-right: 1px solid rgb(0, 79, 79);
+
 }
