@@ -81,12 +81,17 @@ public class DocumentIngestor {
         ));
 
         examples.put(Category.FLEET, asList(
+                "This Car Policy outlines the rules and procedures for the allocation, use, and maintenance of company cars",
+                "Company cars are primarily for business use",
+                "The company provides comprehensive insurance coverage for all company cars",
+                "Fuel and Expenses: Employees must use company-provided fuel cards where applicable",
                 "The fleet manager oversees the maintenance and operation of all company vehicles.",
                 "Regular vehicle inspections are conducted to ensure safety and reliability.",
                 "Fleet management software is used to track vehicle locations and usage.",
                 "Fuel efficiency programs are implemented to reduce operational costs.",
                 "The company has a policy for the proper use of fleet vehicles to prevent misuse.",
                 "Vehicle leasing agreements are managed by the fleet department.",
+                "Company cars are provided to employees based on their job requirements and responsibilities",
                 "Accident reports involving company vehicles must be filed immediately with the fleet manager.",
                 "Fleet vehicles are scheduled for regular servicing to maintain optimal performance.",
                 "The fleet department is responsible for renewing vehicle registrations and insurance.",
