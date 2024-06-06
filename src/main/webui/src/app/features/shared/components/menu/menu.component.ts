@@ -29,6 +29,11 @@ export default class MenuComponent {
       label:'Meeting',
       url:'./meeting',
       iconName:'groups'
+    },
+    {
+      label:'Actions',
+      url:'./actions',
+      iconName:'check_box'
     }
   ];
 }

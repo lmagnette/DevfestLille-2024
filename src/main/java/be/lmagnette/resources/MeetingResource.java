@@ -8,6 +8,7 @@ import be.lmagnette.models.MeetingSummary;
 import dev.langchain4j.agent.tool.P;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -29,6 +30,7 @@ public class MeetingResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.TEXT_PLAIN)
+    @Transactional
     public Response summarize(@PathParam("id") Long id) {
         Source source = Source.findById(id);
         if(source == null) {

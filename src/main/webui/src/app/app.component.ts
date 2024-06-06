@@ -30,6 +30,6 @@ export class AppComponent {
   }
 
   initClassifier() {
-    this.service.initClassifier();
+    this.service.initClassifier().subscribe();
   }
 }

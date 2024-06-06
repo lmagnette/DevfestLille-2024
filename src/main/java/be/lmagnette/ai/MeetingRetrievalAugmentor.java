@@ -19,7 +19,7 @@ public class MeetingRetrievalAugmentor implements Supplier<RetrievalAugmentor> {
     private final RetrievalAugmentor augmentor;
 
     MeetingRetrievalAugmentor(PgVectorEmbeddingStore store, EmbeddingModel model) {
-        Filter onlyMeeting = metadataKey("CATEGORY").isEqualTo(Category.MEETING.toString());
+        Filter onlyMeeting = metadataKey("CATEGORY").isEqualTo(Category.MEETING.name());
         EmbeddingStoreContentRetriever contentRetriever = EmbeddingStoreContentRetriever.builder()
                 .embeddingModel(model)
                 .embeddingStore(store)
