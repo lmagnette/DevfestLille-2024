@@ -20,6 +20,7 @@ import static java.util.Arrays.asList;
 @ApplicationScoped
 public class DocumentIngestor {
 
+    private EmbeddingModelTextClassifier<Category> classifier;
     @Inject
     PgVectorEmbeddingStore store;
 
@@ -119,6 +120,7 @@ public class DocumentIngestor {
                 "The chairperson is responsible for keeping the meeting on track and on time.",
                 "Feedback from meeting participants is collected to improve future meetings."
         ));
+
     }
 
     public void ingest(List<Document> documents) {
@@ -130,7 +132,10 @@ public class DocumentIngestor {
     }
 
     public EmbeddingModelTextClassifier<Category> getClassifier(){
-        return new EmbeddingModelTextClassifier<>(embeddingModel, examples);
+        if(classifier == null){
+            this.classifier = new EmbeddingModelTextClassifier<>(embeddingModel, examples);
+        }
+        return classifier;
     }
 
     private EmbeddingStoreIngestor getIngestor(){

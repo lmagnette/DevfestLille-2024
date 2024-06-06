@@ -1,5 +1,6 @@
 package be.lmagnette.resources;
 
+import be.lmagnette.ai.DocumentIngestor;
 import be.lmagnette.entities.Source;
 import be.lmagnette.models.FileIngestionRequest;
 import be.lmagnette.models.FileUploadInput;
@@ -21,6 +22,9 @@ public class IngestionResource {
 
     @Inject
     IngestionService ingestionService;
+
+    @Inject
+    DocumentIngestor ingestor;
 
 
     @POST
@@ -61,6 +65,12 @@ public class IngestionResource {
 
         var entities = Source.listAll();
         return RestResponse.ResponseBuilder.ok(entities).build();
+    }
+
+    @GET
+    @Path("classify")
+    public void initClassifier(){
+        ingestor.getClassifier();
     }
 
 
