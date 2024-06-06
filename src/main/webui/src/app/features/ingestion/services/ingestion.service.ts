@@ -13,6 +13,9 @@ export class IngestionService {
     private http = inject(HttpClient);
     sources = this._sources.asReadonly();
 
+    initClassifier(){
+        return this.http.get('ingest/classify')
+    }
 
     ingestWebPage(source: string) {
         return this.http.post('ingest/url', source).pipe(switchMap( () => this.listSources()))

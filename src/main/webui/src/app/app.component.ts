@@ -1,10 +1,11 @@
-import {AfterViewChecked, AfterViewInit, Component, effect, Signal, viewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, effect, inject, Signal, viewChild} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {MatIcon} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatDrawer, MatDrawerContainer, MatDrawerContent} from "@angular/material/sidenav";
 import MenuComponent from "./features/shared/components/menu/menu.component";
+import {IngestionService} from "./features/ingestion/services/ingestion.service";
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,8 @@ import MenuComponent from "./features/shared/components/menu/menu.component";
 export class AppComponent {
 
   title = 'company-genie-front';
-  showFiller: boolean= true;
   drawer: Signal<MatDrawer | undefined> = viewChild('drawer');
+  service = inject(IngestionService)
 
   constructor() {
     effect(() => {
@@ -28,4 +29,7 @@ export class AppComponent {
     })
   }
 
+  initClassifier() {
+    this.service.initClassifier();
+  }
 }
