@@ -1,6 +1,6 @@
 <input #fileInput type="file" id="files" name="files" multiple (change)="onFilesChanged()">
 <ul>
-  @for (file of files; track file?.name) {
+  @for (file of files(); track file?.name) {
     <li>{{ file?.name }}</li>
   }
 </ul>

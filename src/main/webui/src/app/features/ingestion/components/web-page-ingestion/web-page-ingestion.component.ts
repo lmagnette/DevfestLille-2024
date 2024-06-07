@@ -1,4 +1,4 @@
-import {Component, inject, output} from '@angular/core';
+import {Component, inject, model, output} from '@angular/core';
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
@@ -21,12 +21,12 @@ import {IngestionService} from "../../services/ingestion.service";
   styleUrl: './web-page-ingestion.component.scss'
 })
 export class WebPageIngestionComponent {
-  source: string = '';
+  source= model<string>('');
 
   service = inject(IngestionService);
 
 
   ingestWebPage() {
-    this.service.ingestWebPage(this.source).subscribe();
+    this.service.ingestWebPage(this.source()).subscribe();
   }
 }

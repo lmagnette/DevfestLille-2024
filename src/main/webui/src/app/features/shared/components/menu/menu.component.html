@@ -1,4 +1,4 @@
-@for (entry of menu; track entry.label) {
+@for (entry of menu(); track entry.label) {
   <a [routerLink]="entry.url" [routerLinkActive]="'active'">
     <mat-icon>
       {{ entry.iconName }}

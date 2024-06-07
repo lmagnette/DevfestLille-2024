@@ -1,4 +1,4 @@
-import {Component, inject, output, viewChild} from '@angular/core';
+import {Component, inject, output, signal, viewChild} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {IngestionService} from "../../services/ingestion.service";
@@ -16,18 +16,18 @@ import {IngestionService} from "../../services/ingestion.service";
 export class FileIngestionComponent {
 
   fileInput = viewChild('fileInput');
-  files: File[] | null = null;
+  files= signal<File[] | null>(null);
 
   service = inject(IngestionService);
 
 
   onFilesChanged() {
     const selectedFiles: { [key: string]: File } = (this.fileInput() as any).nativeElement.files;
-    this.files = Object.values(selectedFiles);
+    this.files.set(Object.values(selectedFiles));
   }
 
 
   ingestFiles() {
-    this.service.ingestFiles(this.files || []).subscribe();
+    this.service.ingestFiles(this.files() || []).subscribe();
   }
 }

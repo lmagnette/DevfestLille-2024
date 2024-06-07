@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 
@@ -14,28 +14,28 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
   styleUrl: './menu.component.scss'
 })
 export default class MenuComponent {
-  menu:MenuEntry[] = [
+  menu = signal<MenuEntry[]>([
     {
-      label:'Chat',
-      url:'./chat',
-      iconName:'chat'
+      label: 'Chat',
+      url: './chat',
+      iconName: 'chat'
     },
     {
-      label:'Ingest',
-      url:'./ingest',
-      iconName:'cloud_download'
+      label: 'Ingest',
+      url: './ingest',
+      iconName: 'cloud_download'
     },
     {
-      label:'Meeting',
-      url:'./meeting',
-      iconName:'groups'
+      label: 'Meeting',
+      url: './meeting',
+      iconName: 'groups'
     },
     {
-      label:'Actions',
-      url:'./actions',
-      iconName:'check_box'
+      label: 'Actions',
+      url: './actions',
+      iconName: 'check_box'
     }
-  ];
+  ]);
 }
 
 
