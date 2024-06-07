@@ -30,7 +30,7 @@ public class ChatResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response sendMessage(ChatExchange request) {
         var relevant = store.findRelevant(model.embed(request.prompt()).content(), 3, 0.1);
-        var sources = relevant.stream().map(r -> new Resource(r.score(), r.embedded().metadata("SOURCE"))).toList();
+        var sources = relevant.stream().map(r -> new Resource(r.score(), r.embedded().metadata().getString("SOURCE"))).toList();
         var response = companyAiService.chat(request.id(), request.prompt());
         return Response.ok(new ChatExchange(request.id(),request.prompt(), response, sources)).build();
     }
