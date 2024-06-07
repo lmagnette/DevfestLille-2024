@@ -1,4 +1,4 @@
-import {Component, inject, output, signal, viewChild} from '@angular/core';
+import {Component, inject, signal, viewChild} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {IngestionService} from "../../services/ingestion.service";

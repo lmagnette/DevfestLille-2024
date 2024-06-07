@@ -1,4 +1,4 @@
-import {Component, inject, model, output} from '@angular/core';
+import {Component, inject, model} from '@angular/core';
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
