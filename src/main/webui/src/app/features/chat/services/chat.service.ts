@@ -17,7 +17,7 @@ export class ChatService {
 
   chat(prompt:string):Observable<ChatExchange>{
     this.loading.set(true);
-    return this.httpClient.post<ChatExchange>('chat',{id:this.currentChatId(),prompt}).pipe(
+    return this.httpClient.post<ChatExchange>('/api/chat',{id:this.currentChatId(),prompt}).pipe(
         tap(
             data => {
               this._chatHistory.update( history => [...history, data]);

@@ -14,11 +14,11 @@ export class IngestionService {
     sources = this._sources.asReadonly();
 
     initClassifier(){
-        return this.http.get('ingest/classify')
+        return this.http.get('/api/ingest/classify')
     }
 
     ingestWebPage(source: string) {
-        return this.http.post('ingest/url', source).pipe(switchMap( () => this.listSources()))
+        return this.http.post('/api/ingest/url', source).pipe(switchMap( () => this.listSources()))
     }
 
 
@@ -27,19 +27,19 @@ export class IngestionService {
         for (let file of files || []) {
             formData.set('file', file)
         }
-        return this.http.post('ingest/file', formData).pipe(
+        return this.http.post('/api/ingest/file', formData).pipe(
             switchMap( v => this.listSources())
         )
     }
 
     ingestLocal() {
-        return this.http.post('ingest/miam', '/Users/lma/sandbox/lab-ai/company-genie/src/main/resources/data').pipe(
+        return this.http.post('/api/ingest/miam', '/Users/lma/sandbox/lab-ai/company-genie/src/main/resources/data').pipe(
             switchMap( v => this.listSources())
         )
     }
 
     listSources() {
-        return this.http.get<Source[]>('ingest/sources').pipe(
+        return this.http.get<Source[]>('/api/ingest/sources').pipe(
             tap(
                 data => this._sources.set(data)
             )

@@ -11,14 +11,14 @@ export class MeetingService {
     private http = inject(HttpClient);
 
     summarize(){
-      return this.http.post<MeetingSummary>('/meeting', {description:'the weekly meeting of june 5 2024'});
+      return this.http.post<MeetingSummary>('/api/meeting', {description:'the weekly meeting of june 5 2024'});
     }
 
     summarizeById(id:number){
-        return this.http.get<string>(`/meeting/${id}`, { responseType: 'text' as 'json' });
+        return this.http.get<string>(`/api/meeting/${id}`, { responseType: 'text' as 'json' });
     }
 
     list(){
-        return this.http.get<Source[]>('meeting/documents');
+        return this.http.get<Source[]>('/api/meeting/documents');
     }
 }

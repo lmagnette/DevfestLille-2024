@@ -9,6 +9,6 @@ export class ActionsService {
 
   private http = inject(HttpClient)
   getAllActions() {
-    return this.http.get<Action[]>('/actions');
+    return this.http.get<Action[]>('/api/actions');
   }
 }
