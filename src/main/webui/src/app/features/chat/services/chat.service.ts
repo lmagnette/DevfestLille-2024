@@ -28,7 +28,7 @@ export class ChatService {
   }
 
   initChat(){
-    this.httpClient.get<{id:string,name:string}>('/history/new').subscribe(
+    this.httpClient.get<{id:string,name:string}>('/api/history/new').subscribe(
       data =>
       this.currentChatId.set(data.id)
     )
